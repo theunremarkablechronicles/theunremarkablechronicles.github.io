@@ -1,0 +1,54 @@
+.header {
+  width: 700px;
+  margin: 0 auto;
+  padding-top: 0.2rem;
+  text-align: center;
+  cursor: pointer;
+}
+
+@media (max-width: 600px) {
+  .header {
+    width: auto;
+  }
+
+  .header .blogLogo {
+    width: 5rem;
+    padding-top: 1rem;
+    padding-bottom: 1rem;
+  }
+  .topContainer {
+    padding: 3% 5%;
+  }
+}
+
+.topContainer {
+  display: flex;
+  align-items: flex-start;
+  justify-content: flex-start;
+  font-family: Playfair Display;
+  cursor: pointer;
+}
+
+.language {
+  border: 1px solid #aaa;
+  color: #999;
+  padding: 0.4rem 0.8rem;
+  margin-left: auto;
+}
+
+.language:hover {
+  border: 1px solid #1e68e6;
+  padding: 0.4rem 0.8rem;
+}
+
+.blogLogo {
+  width: 11rem;
+  padding-bottom: 3em;
+  padding-top: 3em;
+}
+
+.blogLogoCompact {
+  margin-top: 0.27rem;
+  height: 2.3rem;
+  padding-left: 1rem;
+}
