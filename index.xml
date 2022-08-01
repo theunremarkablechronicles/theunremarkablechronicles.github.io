@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8"?>
+<rss version="2.0">
+    <channel>
+        <title>The Unremarkable Chronicles</title>
+        <link>https://theunremarkablechronicles.github.io/blog</link>
+        <description>undefined</description>
+        <lastBuildDate>Mon, 01 Aug 2022 06:30:52 GMT</lastBuildDate>
+        <docs>https://validator.w3.org/feed/docs/rss2.html</docs>
+        <generator>totoro</generator>
+        <language>en</language>
+        <image>
+            <title>The Unremarkable Chronicles</title>
+            <url>https://theunremarkablechronicles.github.io/blog/favicon-32x32.png</url>
+            <link>https://theunremarkablechronicles.github.io/blog</link>
+        </image>
+        <copyright>© 2022 the unremarkable chronicles</copyright>
+        <item>
+            <title><![CDATA[blog post example]]></title>
+            <link>https://theunremarkablechronicles.github.io/blog/blog-post-example</link>
+            <guid>https://theunremarkablechronicles.github.io/blog/blog-post-example</guid>
+            <pubDate>Wed, 31 Mar 2021 00:00:00 GMT</pubDate>
+            <description><![CDATA[A test of different types of blocks]]></description>
+        </item>
+    </channel>
+</rss>
