@@ -1,6 +1,7 @@
 import Link from 'next/link'
 import styles from '../styles/header.module.css'
 import blogConfig from 'blog.config'
+import Navigation from './navigation'
 
 const Header = ({ compact = false }) => {
   return (
@@ -13,7 +14,7 @@ const Header = ({ compact = false }) => {
           <Link href={'/'}>
             <h2 id="blog">
               {/* <img src="/blog.svg" className={styles.blogLogoCompact} /> */}
-              the unremarkable chronicles
+              The Unremarkable Chronicles
             </h2>
           </Link>
         )}
@@ -21,11 +22,12 @@ const Header = ({ compact = false }) => {
       {!compact && (
         <Link href="/">
           <h1 id="blog">
-            {/* <img src="/blog.svg" className={styles.blogLogo} /> */}the
-            unremarkable chronicles
+            {/* <img src="/blog.svg" className={styles.blogLogo} /> */}
+            The Unremarkable Chronicles
           </h1>
         </Link>
       )}
+      <Navigation />
     </header>
   )
 }

@@ -1,6 +1,5 @@
 .header {
-  width: 700px;
-  margin: 0 auto;
+  margin: 20px auto;
   padding-top: 0.2rem;
   text-align: center;
   cursor: pointer;
@@ -51,4 +50,8 @@
   margin-top: 0.27rem;
   height: 2.3rem;
   padding-left: 1rem;
+}
+#blog {
+  font-size: 4rem;
+  margin: 30px;
 }
