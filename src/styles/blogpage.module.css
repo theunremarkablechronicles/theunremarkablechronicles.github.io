@@ -1,11 +1,11 @@
 .blogContainer {
+  margin: 0 auto;
   padding: 0 5%;
   display: flex;
-  gap: 20px;
-  justify-content: center;
-  min-height: 49vw;
+  gap: 30px;
+  flex-wrap: wrap;
+  max-width: 80vw;
 }
-
 .blogIndex h1 {
   margin-bottom: 50px;
 }

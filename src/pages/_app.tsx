@@ -33,13 +33,13 @@ function BlogApp({ Component, pageProps }) {
     <>
       <Component {...pageProps} />
 
-      <footer>
+      {/* <footer>
         <div>
           <div>
             <span>{blogConfig.footer}</span>
           </div>
         </div>
-      </footer>
+      </footer> */}
       <script
         type="text/javascript"
         dangerouslySetInnerHTML={{
