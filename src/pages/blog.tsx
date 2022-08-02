@@ -5,10 +5,11 @@ import Byline from '../components/byline'
 import Head from '../components/head'
 import CoverImage from '../components/cover-image'
 
-import blogStyles from '../styles/blog.module.css'
+import blogStyles from '../styles/blogpage.module.css'
 import sharedStyles from '../styles/shared.module.css'
 
 import { BlogEntry, getAllPosts, getBlogIndex } from '../lib/notion'
+import Navigation from 'src/components/navigation'
 
 type Props = {
   posts: BlogEntry[]
@@ -28,7 +29,9 @@ const Blog = ({ posts = [] }: Props) => {
   return (
     <>
       <Head titlePre="The Unremarkable Chronicles" />
-      <Header compact></Header>
+      <Header>
+        <Navigation />
+      </Header>
       <div
         className={`${sharedStyles.layout} ${blogStyles.blogIndex} ${blogStyles.blogContainer}`}
       >
