@@ -4,7 +4,8 @@
   display: flex;
   gap: 30px;
   flex-wrap: wrap;
-  max-width: 80vw;
+  max-width: 70vw;
+  justify-content: center;
 }
 .blogIndex h1 {
   margin-bottom: 50px;
@@ -43,12 +44,13 @@
 }
 
 .postPreview {
-  width: 500px;
+  width: 48%;
   height: 450px;
   display: flex;
   flex-direction: column;
   border: 1px solid;
   padding: 20px;
+  flex: auto;
 }
 .postPreview img {
   max-height: 300px;

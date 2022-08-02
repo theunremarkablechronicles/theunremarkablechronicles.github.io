@@ -342,102 +342,102 @@ const Slug = ({ post, redirect }: Props) => {
   }, [redirect, post])
 
   // Add metrics for page.
-  useEffect(() => {
-    var time_since_load = Date.now()
-    var time_since_focus =
-      document.visibilityState === 'visible' ? Date.now() : 0
-    var time_focused_ms = 0
-    var scrolled_90 = false
+  // useEffect(() => {
+  //   var time_since_load = Date.now()
+  //   var time_since_focus =
+  //     document.visibilityState === 'visible' ? Date.now() : 0
+  //   var time_focused_ms = 0
+  //   var scrolled_90 = false
 
-    function countEvent(slug, title) {
-      if (
-        !sent[slug] &&
-        window.location.href.startsWith(blogConfig.baseUrl) &&
-        typeof (window as any)?.goatcounter?.count === 'function'
-      ) {
-        ;(window as any)?.goatcounter?.count({
-          path: `/${window.location.pathname}${window.location.search}/${slug}`,
-          title: `${title}: ${document.title}`,
-          event: true,
-        })
-        sent[slug] = true
-      }
-    }
-    var sent = {}
+  //   function countEvent(slug, title) {
+  //     if (
+  //       !sent[slug] &&
+  //       window.location.href.startsWith(blogConfig.baseUrl) &&
+  //       typeof (window as any)?.goatcounter?.count === 'function'
+  //     ) {
+  //       ;(window as any)?.goatcounter?.count({
+  //         path: `/${window.location.pathname}${window.location.search}/${slug}`,
+  //         title: `${title}: ${document.title}`,
+  //         event: true,
+  //       })
+  //       sent[slug] = true
+  //     }
+  //   }
+  //   var sent = {}
 
-    document.addEventListener('visibilitychange', function () {
-      if (document.visibilityState === 'visible') {
-        time_since_focus = Date.now()
-      } else {
-        if (time_since_focus > 0) {
-          time_focused_ms += +Date.now() - time_since_focus
-        }
-        time_since_focus = 0
-      }
-    })
+  //   document.addEventListener('visibilitychange', function () {
+  //     if (document.visibilityState === 'visible') {
+  //       time_since_focus = Date.now()
+  //     } else {
+  //       if (time_since_focus > 0) {
+  //         time_focused_ms += +Date.now() - time_since_focus
+  //       }
+  //       time_since_focus = 0
+  //     }
+  //   })
 
-    function _listenFor10Scroll() {
-      var h = document.documentElement,
-        b = document.body,
-        st = 'scrollTop',
-        sh = 'scrollHeight'
+  //   function _listenFor10Scroll() {
+  //     var h = document.documentElement,
+  //       b = document.body,
+  //       st = 'scrollTop',
+  //       sh = 'scrollHeight'
 
-      var percent =
-        ((h[st] || b[st]) / ((h[sh] || b[sh]) - h.clientHeight)) * 100
+  //     var percent =
+  //       ((h[st] || b[st]) / ((h[sh] || b[sh]) - h.clientHeight)) * 100
 
-      if (percent > 10.0) {
-        document.removeEventListener('scroll', _listenFor10Scroll)
-        countEvent('started-scroll', 'Scrolled 10% of page')
-      }
-    }
+  //     if (percent > 10.0) {
+  //       document.removeEventListener('scroll', _listenFor10Scroll)
+  //       countEvent('started-scroll', 'Scrolled 10% of page')
+  //     }
+  //   }
 
-    function _listenFor90Scroll() {
-      var h = document.documentElement,
-        b = document.body,
-        st = 'scrollTop',
-        sh = 'scrollHeight'
+  //   function _listenFor90Scroll() {
+  //     var h = document.documentElement,
+  //       b = document.body,
+  //       st = 'scrollTop',
+  //       sh = 'scrollHeight'
 
-      var percent =
-        ((h[st] || b[st]) / ((h[sh] || b[sh]) - h.clientHeight)) * 100
+  //     var percent =
+  //       ((h[st] || b[st]) / ((h[sh] || b[sh]) - h.clientHeight)) * 100
 
-      if (percent > 90.0) {
-        scrolled_90 = true
-        document.removeEventListener('scroll', _listenFor90Scroll)
-        countEvent('finished-scroll', 'Scrolled 90% of the page')
-      }
-    }
+  //     if (percent > 90.0) {
+  //       scrolled_90 = true
+  //       document.removeEventListener('scroll', _listenFor90Scroll)
+  //       countEvent('finished-scroll', 'Scrolled 90% of the page')
+  //     }
+  //   }
 
-    document.addEventListener('scroll', _listenFor90Scroll)
-    document.addEventListener('scroll', _listenFor10Scroll)
+  //   document.addEventListener('scroll', _listenFor90Scroll)
+  //   document.addEventListener('scroll', _listenFor10Scroll)
 
-    let interval = setInterval(() => {
-      let minute_marker = null
-      let now = Date.now()
-      if (!sent['2-minute'] && now - time_since_load > 120000) {
-        minute_marker = '2-minute'
-      }
-      if (!sent['5-minute'] && now - time_since_load > 300000) {
-        minute_marker = '5-minute'
-      }
-      if (!sent['10-minute'] && now - time_since_load > 600000) {
-        minute_marker = '10-minute'
-      }
+  //   let interval = setInterval(() => {
+  //     let minute_marker = null
+  //     let now = Date.now()
+  //     if (!sent['2-minute'] && now - time_since_load > 120000) {
+  //       minute_marker = '2-minute'
+  //     }
+  //     if (!sent['5-minute'] && now - time_since_load > 300000) {
+  //       minute_marker = '5-minute'
+  //     }
+  //     if (!sent['10-minute'] && now - time_since_load > 600000) {
+  //       minute_marker = '10-minute'
+  //     }
 
-      if (minute_marker != null) {
-        countEvent(minute_marker, `Stayed on page (${minute_marker})`)
-      }
+  //     if (minute_marker != null) {
+  //       countEvent(minute_marker, `Stayed on page (${minute_marker})`)
+  //     }
 
-      if (sent['5-minute'] && scrolled_90) {
-        countEvent('completed-read', 'Completed read')
-      }
-    }, 1000)
+  //     if (sent['5-minute'] && scrolled_90) {
+  //       countEvent('completed-read', 'Completed read')
+  //     }
+  //   }, 1000)
 
-    return function cleanup() {
-      document.removeEventListener('scroll', _listenFor10Scroll)
-      document.removeEventListener('scroll', _listenFor90Scroll)
-      clearInterval(interval)
-    }
-  }, [])
+  //   return function cleanup() {
+  //     document.removeEventListener('scroll', _listenFor10Scroll)
+  //     document.removeEventListener('scroll', _listenFor90Scroll)
+  //     clearInterval(interval)
+  //   }
+  // }, [])
 
   // If the page is not yet generated, this will be displayed
   // initially until getStaticProps() finishes running
@@ -466,7 +466,7 @@ const Slug = ({ post, redirect }: Props) => {
         description={post.subtitle}
         path={router.asPath}
         ogImage={`${blogConfig.baseUrl}/images/${getImageFileName(
-          post.cover[post.cover?.type]?.url,
+          post.cover?.[post.cover?.type]?.url,
           post.id
         )}.optimized.jpg`}
       />

@@ -198,8 +198,8 @@ export async function getAllPosts() {
   const posts = (
     await Promise.all(
       postsTable.map(async (post) => {
-        if (post.cover[post.cover?.type]?.url) {
-          await fetchImage(fs, post.cover[post.cover.type].url, post.id)
+        if (post.cover?.[post.cover?.type]?.url) {
+          await fetchImage(fs, post.cover?.[post.cover.type].url, post.id)
         } else {
           console.warn('cover missing for post:', post)
         }
