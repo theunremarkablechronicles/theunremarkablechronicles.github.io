@@ -1,4 +1,5 @@
 import { resolve } from 'path'
+import fs from 'fs'
 import { Client } from '@notionhq/client'
 import {
   Block,
@@ -16,9 +17,11 @@ import {
   StringFormulaValue,
   FilesPropertyInputValue,
   ExternalFile,
+  MultiSelectPropertyValue,
 } from '@notionhq/client/build/src/api-types'
 import { readFile, writeFile } from 'fs/promises'
 import blogConfig from '../../blog.config'
+import { fetchImage } from '../lib/image-helpers'
 
 export type NamedFile = File & { id: string; name: string }
 
@@ -31,6 +34,7 @@ export type BlogEntry = {
   published: boolean
   title: string
   subtitle: string | null
+  tags: string[]
 }
 
 export type BlogContent = {
@@ -53,6 +57,7 @@ type BlogDatabaseEntry = {
     Date: DatePropertyValue
     Published: CheckboxPropertyValue
     Subtitle: RichTextPropertyValue
+    Tags: MultiSelectPropertyValue
   }
 }
 
@@ -119,6 +124,7 @@ export async function getBlogIndex(): Promise<BlogEntry[]> {
         published: page.properties.Published.checkbox,
         title,
         subtitle: page.properties.Subtitle.rich_text[0]?.plain_text || null,
+        tags: page.properties.Tags.multi_select,
       }
     })
 
@@ -170,4 +176,36 @@ export async function getPageData(entry: BlogEntry): Promise<BlogPost> {
       `Failed to load pageData for ${entry.slug} (${entry.id}): ${err}`
     )
   }
+}
+
+export function getAllTagsFromPosts(posts) {
+  const taggedPosts = posts.filter((post) => post?.tags)
+  const tags = [...taggedPosts.map((p) => p.tags).flat()]
+  const tagObj = {}
+  tags.forEach((tag) => {
+    if (tag in tagObj) {
+      tagObj[tag]++
+    } else {
+      tagObj[tag] = 1
+    }
+  })
+  return tagObj
+}
+
+export async function getAllPosts() {
+  const postsTable = await getBlogIndex()
+
+  const posts = (
+    await Promise.all(
+      postsTable.map(async (post) => {
+        if (post.cover[post.cover?.type]?.url) {
+          await fetchImage(fs, post.cover[post.cover.type].url, post.id)
+        } else {
+          console.warn('cover missing for post:', post)
+        }
+        return post
+      })
+    )
+  ).filter(Boolean)
+  return posts
 }

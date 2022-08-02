@@ -46,11 +46,11 @@ function BlogApp({ Component, pageProps }) {
           __html: `if (window.location.host !== '${blogConfig.baseUrl}') window.goatcounter = {no_onload: true}`,
         }}
       />
-      <script
+      {/* <script
         data-goatcounter={`${blogConfig.goatCounterUrl}/count`}
         async
         src={`${blogConfig.goatCounterUrl}/count.js`}
-      ></script>
+      ></script> */}
     </>
   )
 }

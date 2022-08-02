@@ -8,8 +8,8 @@ import CoverImage from '../components/cover-image'
 import blogStyles from '../styles/blog.module.css'
 import sharedStyles from '../styles/shared.module.css'
 
-import { BlogEntry, getAllPosts } from '../lib/notion'
-import Navigation from 'src/components/navigation'
+import { BlogEntry, getAllPosts, getBlogIndex } from '../lib/notion'
+
 type Props = {
   posts: BlogEntry[]
 }
@@ -24,14 +24,11 @@ export async function getStaticProps(context) {
   }
 }
 
-const Index = ({ posts = [] }: Props) => {
+const Blog = ({ posts = [] }: Props) => {
   return (
     <>
       <Head titlePre="The Unremarkable Chronicles" />
-      <Header>
-        <Navigation />
-      </Header>
-
+      <Header compact></Header>
       <div
         className={`${sharedStyles.layout} ${blogStyles.blogIndex} ${blogStyles.blogContainer}`}
       >
@@ -59,4 +56,4 @@ const Index = ({ posts = [] }: Props) => {
   )
 }
 
-export default Index
+export default Blog
