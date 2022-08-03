@@ -44,13 +44,19 @@ const Blog = ({ posts = [] }: Props) => {
               <Link href="/[slug]" passHref as={`/${post.slug}`}>
                 <a>
                   <CoverImage post={post} />
-                  <div className={blogStyles.title}>{post.title}</div>
-                  {post.subtitle && (
-                    <div className={blogStyles.subtitle}>{post.subtitle}</div>
-                  )}
                 </a>
               </Link>
-              <Byline post={post} />
+              <div className={blogStyles.postPreviewText}>
+                <Link href="/[slug]" passHref as={`/${post.slug}`}>
+                  <a>
+                    <div className={blogStyles.title}>{post.title}</div>
+                    {post.subtitle && (
+                      <div className={blogStyles.subtitle}>{post.subtitle}</div>
+                    )}
+                  </a>
+                </Link>
+                <Byline post={post} />
+              </div>
             </div>
           )
         })}

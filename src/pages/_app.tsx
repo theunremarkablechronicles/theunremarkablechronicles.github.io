@@ -14,11 +14,11 @@ declare global {
 }
 
 Router.events.on('routeChangeStart', (url) => {
-  NProgress.start()
+  // NProgress.start()
 })
 
 Router.events.on('routeChangeComplete', () => {
-  NProgress.done()
+  // NProgress.done()
   let countFunction = (window as any)?.goatcounter?.count
   if (typeof countFunction === 'function') {
     countFunction({
@@ -26,7 +26,7 @@ Router.events.on('routeChangeComplete', () => {
     })
   }
 })
-Router.events.on('routeChangeError', () => NProgress.done())
+// Router.events.on('routeChangeError', () => NProgress.done())
 
 function BlogApp({ Component, pageProps }) {
   return (
