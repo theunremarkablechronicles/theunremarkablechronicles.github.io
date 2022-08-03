@@ -42,16 +42,22 @@ const Blog = ({ posts = [] }: Props) => {
           return (
             <div className={blogStyles.postPreview} key={post.id}>
               <Link href="/[slug]" passHref as={`/${post.slug}`}>
-                <a>
-                  <CoverImage post={post} />
-                </a>
+                <CoverImage post={post} />
               </Link>
               <div className={blogStyles.postPreviewText}>
                 <Link href="/[slug]" passHref as={`/${post.slug}`}>
                   <a>
-                    <div className={blogStyles.title}>{post.title}</div>
+                    <div
+                      className={`${blogStyles.title} ${blogStyles.postPreviewHover}`}
+                    >
+                      {post.title}
+                    </div>
                     {post.subtitle && (
-                      <div className={blogStyles.subtitle}>{post.subtitle}</div>
+                      <div
+                        className={`${blogStyles.subtitle} ${blogStyles.postPreviewHover}`}
+                      >
+                        {post.subtitle}
+                      </div>
                     )}
                   </a>
                 </Link>

@@ -20,7 +20,7 @@ const BlogHead = ({
       <meta property="og:url" content={`${blogConfig.baseUrl}${path}`} />
       {ogImage && <meta property="og:image" content={ogImage} />}
       <meta property="og:type" content="website" />
-      <link
+      {/* <link
         rel="icon"
         type="image/png"
         sizes="32x32"
@@ -32,7 +32,7 @@ const BlogHead = ({
         sizes="16x16"
         href="/favicon-16x16.png"
       />
-      <link rel="stylesheet" type="text/css" href="/nprogress.css" />
+      <link rel="stylesheet" type="text/css" href="/nprogress.css" /> */}
       <link
         rel="preload"
         href="/fonts/ibm-plex-serif-v8-latin-regular.woff2"

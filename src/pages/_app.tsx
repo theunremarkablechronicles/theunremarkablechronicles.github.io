@@ -2,7 +2,7 @@ import '../styles/global.css'
 import '../styles/overrides.css'
 import 'highlight.js/styles/github.css'
 import Router from 'next/router'
-import NProgress from 'nprogress'
+// import NProgress from 'nprogress'
 import blogConfig from 'blog.config'
 
 export {}

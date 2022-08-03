@@ -11,28 +11,6 @@
   margin-bottom: 50px;
 }
 
-.escapePreview {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  border: none;
-  background-color: black;
-  border: 1px solid black;
-  color: white;
-  padding: 10px;
-  height: 24px;
-  border-radius: 5px;
-  transition: all 0.2s ease 0s;
-}
-
-.escapePreview:hover {
-  background-color: white;
-  color: black;
-  border: 1px solid black;
-  cursor: pointer;
-}
-
 .titleContainer {
   display: inline-flex;
   align-items: center;
@@ -41,6 +19,24 @@
 
 .noPosts {
   text-align: center;
+}
+.title {
+  font-size: 1.75rem;
+  text-align: left;
+  margin-top: 0.5rem;
+  margin-bottom: 0.6rem;
+  margin-right: 0.5rem;
+  font-weight: 600;
+  font-family: var(--font-serif);
+  color: var(--title);
+}
+
+.subtitle {
+  font-size: 1.1rem;
+  font-family: var(--font-sans);
+  color: var(--subtitle);
+  padding-bottom: 1.2em;
+  padding-right: 0.5rem;
 }
 
 .postPreview {
@@ -54,6 +50,10 @@
 
 .postPreviewText {
   padding: 20px;
+}
+
+.postPreviewText a:hover .postPreviewHover {
+  color: var(--blue);
 }
 
 .postPreview img {
@@ -167,25 +167,6 @@
 
 .coverImage {
   width: 100%;
-}
-
-.title {
-  font-size: 1.75rem;
-  color: var(--title);
-  text-align: left;
-  margin-top: 0.5rem;
-  margin-bottom: 0.6rem;
-  margin-right: 0.5rem;
-  font-weight: 600;
-  font-family: var(--font-serif);
-}
-
-.subtitle {
-  font-size: 1.1rem;
-  font-family: var(--font-sans);
-  color: var(--subtitle);
-  padding-bottom: 1.2em;
-  padding-right: 0.5rem;
 }
 
 .columnContainer {
