@@ -3,9 +3,9 @@
   align-items: center;
 }
 
-.bylinetext {
+/* .bylinetext {
   padding-left: 0.5em;
-}
+} */
 
 .profileimage img {
   width: 2.5rem;
@@ -43,7 +43,7 @@
   font-style: normal;
   font-weight: normal;
   font-size: 0.8rem;
-
+  margin: 1rem auto;
   color: #7b7b7b;
 }
 

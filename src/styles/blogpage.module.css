@@ -35,8 +35,6 @@
   font-size: 1.1rem;
   font-family: var(--font-sans);
   color: var(--subtitle);
-  padding-bottom: 1.2em;
-  padding-right: 0.5rem;
 }
 
 .postPreview {
@@ -49,7 +47,7 @@
 }
 
 .postPreviewText {
-  padding: 20px;
+  padding: 0.9rem 1.5rem;
 }
 
 .postPreviewText a:hover .postPreviewHover {

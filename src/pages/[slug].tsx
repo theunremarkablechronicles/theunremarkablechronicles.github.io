@@ -21,6 +21,7 @@ import {
 import RichTextSpan from 'src/components/rich-text'
 import Code from 'src/components/code'
 import blogConfig from 'blog.config'
+import Navigation from 'src/components/navigation'
 
 type Props = {
   post: BlogPost
@@ -470,16 +471,21 @@ const Slug = ({ post, redirect }: Props) => {
           post.id
         )}.optimized.jpg`}
       />
-      <Header compact />
+      <Header>
+        <Navigation />
+      </Header>
       <div className={blogStyles.blogContainer}>
         <div className={`${blogStyles.post}`}>
+          <div className={blogStyles.header}>
+            <div>
+              <div className={blogStyles.title}>{post.title || ''}</div>
+              {post.subtitle && (
+                <div className={blogStyles.subtitle}>{post.subtitle}</div>
+              )}
+            </div>
+            <Byline post={post} />
+          </div>
           <CoverImage post={post} />
-          <div className={blogStyles.title}>{post.title || ''}</div>
-          {post.subtitle && (
-            <div className={blogStyles.subtitle}>{post.subtitle}</div>
-          )}
-          <Byline post={post} />
-
           <div className={blogStyles.postContent}>
             {elements.length === 0 && <p>This post has no content</p>}
             {elements}

@@ -42,7 +42,9 @@ const Blog = ({ posts = [] }: Props) => {
           return (
             <div className={blogStyles.postPreview} key={post.id}>
               <Link href="/[slug]" passHref as={`/${post.slug}`}>
-                <CoverImage post={post} />
+                <a>
+                  <CoverImage post={post} />
+                </a>
               </Link>
               <div className={blogStyles.postPreviewText}>
                 <Link href="/[slug]" passHref as={`/${post.slug}`}>

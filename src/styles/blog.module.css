@@ -56,8 +56,8 @@
 .post h1 {
   font-size: 1.7rem;
   line-height: 2.3rem;
-  padding-top: 1.5rem;
-  padding-bottom: 1.5rem;
+  /* padding-top: 1.5rem;
+  padding-bottom: 1.5rem; */
 }
 
 .post h2 {
@@ -71,13 +71,13 @@
   line-height: 1.2rem;
 }
 
-.post :global(h2) {
+/* .post :global(h2) {
   margin: 3rem 0 1.5rem 0;
-}
+} */
 
-.post :global(h3) {
+/* .post :global(h3) {
   margin: 1.5rem 0;
-}
+} */
 
 .post .postMedia {
   margin: 2rem 0rem 0rem 0rem;
@@ -129,7 +129,7 @@
 }
 
 .postContent {
-  margin-top: 2em;
+  margin-top: 1em;
   font-family: var(--font-sans);
   font-size: 1.05rem;
   line-height: 2rem;
@@ -168,10 +168,12 @@
   font-size: 1.1rem;
   font-family: var(--font-sans);
   color: var(--subtitle);
-  padding-bottom: 1.2em;
-  padding-right: 0.5rem;
 }
-
+.header {
+  display: flex;
+  justify-content: space-between;
+  margin: 1.5rem auto;
+}
 .columnContainer {
   display: flex;
   flex-direction: row;
