@@ -2,7 +2,6 @@
   margin: 20px auto;
   padding-top: 0.2rem;
   text-align: center;
-  cursor: pointer;
 }
 
 @media (max-width: 600px) {
@@ -24,20 +23,6 @@
   display: flex;
   align-items: flex-start;
   justify-content: flex-start;
-  font-family: Playfair Display;
-  cursor: pointer;
-}
-
-.language {
-  border: 1px solid #aaa;
-  color: #999;
-  padding: 0.4rem 0.8rem;
-  margin-left: auto;
-}
-
-.language:hover {
-  border: 1px solid #1e68e6;
-  padding: 0.4rem 0.8rem;
 }
 
 .blogLogo {
@@ -51,7 +36,8 @@
   height: 2.3rem;
   padding-left: 1rem;
 }
-#blog {
-  font-size: 4rem;
-  margin: 30px;
+
+.header:hover h1 {
+  color: #077a4c;
+  cursor: pointer;
 }

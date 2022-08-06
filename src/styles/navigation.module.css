@@ -11,17 +11,20 @@
   list-style-type: none;
   padding: 0;
 }
+
 .navItem {
   font-family: var(--font-sans);
-  font-weight: 200;
+  font-weight: 400;
   width: 165px;
   height: 50px;
-  position: relative;
-  box-sizing: border-box;
-  overflow: visible;
-  visibility: inherit;
   border-left: 1px solid;
+  cursor: pointer;
 }
+
 .navItem:first-child {
   border-left: none;
+}
+
+.navItem:hover p {
+  color: #129762;
 }

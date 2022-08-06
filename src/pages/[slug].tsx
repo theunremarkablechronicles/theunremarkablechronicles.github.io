@@ -471,9 +471,7 @@ const Slug = ({ post, redirect }: Props) => {
           post.id
         )}.optimized.jpg`}
       />
-      <Header>
-        <Navigation />
-      </Header>
+      <Header>{/* <Navigation /> */}</Header>
       <div className={blogStyles.blogContainer}>
         <div className={`${blogStyles.post}`}>
           <div className={blogStyles.header}>
