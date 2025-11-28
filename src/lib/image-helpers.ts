@@ -1,4 +1,5 @@
 import {
+  ExternalFileWithCaption,
   FileWithCaption,
   ImageBlock,
   VideoBlock,
@@ -17,32 +18,53 @@ export function getImageFileName(url: string, id: string): string | null {
   const fileName = url?.split('.').pop().split('?')[0]
   return `${id}.${fileName}`
 }
+export function getExternalImageFileName(
+  url: string,
+  id: string
+): string | null {
+  const fileName = url?.split('.com/')[1].split('?')[0].split('.')
+  const extension = url?.split('fm=')[1].split('&')[0]
+  return `${fileName}.${extension}`
+}
 
 export function getMediaBlockFileName(
   block: ImageBlock | VideoBlock
 ): string | null {
-  return getImageFileName(getMediaBlockFile(block)?.file.url, block.id)
+  let mediaBlock = getMediaBlockFile(block)
+  return mediaBlock?.type === 'external'
+    ? getExternalImageFileName(mediaBlock.external.url, block.id)
+    : getImageFileName(mediaBlock.file.url, block.id)
 }
 
 export function getMediaBlockFile(
   block: ImageBlock | VideoBlock
-): FileWithCaption | null {
-  if (block.type === 'image' && block.image.type === 'file') {
+): FileWithCaption | ExternalFileWithCaption | null {
+  if (
+    block.type === 'image' &&
+    (block.image.type === 'file' || block.image.type === 'external')
+  ) {
     return block.image
-  } else if (block.type === 'video' && block.video.type === 'file') {
+  } else if (
+    block.type === 'video' &&
+    (block.video.type === 'file' || block.video.type === 'external')
+  ) {
     return block.video
   } else {
     return null
   }
 }
 
-export async function fetchImage(fs, url: string, id: string): Promise<string> {
+export async function fetchImage(
+  fs,
+  url: string,
+  id: string,
+  fileName: string
+): Promise<string> {
   if (!fs.existsSync('public/images')) {
     console.info('created public/images folder.')
     fs.mkdirSync('public/images')
   }
 
-  const fileName = getImageFileName(url, id)
   const filePath = `public/images/${fileName}`
   // Don't download images if they're already there.
   if (!fs.existsSync(filePath)) {

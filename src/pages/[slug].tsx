@@ -9,11 +9,13 @@ import { BlogPost, getBlogIndex, getPageData } from '../lib/notion'
 import React, { CSSProperties, useEffect } from 'react'
 import {
   fetchImage,
+  getExternalImageFileName,
   getImageFileName,
   getMediaBlockFile,
   getMediaBlockFileName,
 } from '../lib/image-helpers'
 import {
+  ExternalFileWithCaption,
   FileWithCaption,
   ImageBlock,
   VideoBlock,
@@ -57,7 +59,17 @@ export async function getStaticProps({ params: { slug } }) {
   let imagePromises = []
   if (entry.cover) {
     imagePromises.push(
-      fetchImage(fs, entry.cover[entry.cover?.type]?.url, entry.id)
+      fetchImage(
+        fs,
+        entry.cover[entry.cover?.type]?.url,
+        entry.id,
+        entry.cover.type === 'external'
+          ? getExternalImageFileName(
+              entry.cover[entry.cover?.type]?.url,
+              entry.id
+            )
+          : getImageFileName(entry.cover[entry.cover?.type]?.url, entry.id)
+      )
     )
   }
 
@@ -76,15 +88,23 @@ export async function getStaticProps({ params: { slug } }) {
   for (const block of blocks) {
     const { type, id } = block
 
-    let url = null
+    let url,
+      fileName = null
     if (type === 'image' || type === 'video') {
       const file = (block as ImageBlock).image || (block as VideoBlock).video
       if (file.type === 'file') {
         url = (file as FileWithCaption).file.url
+        fileName = getImageFileName((file as FileWithCaption).file.url, id)
+      } else if (file.type === 'external') {
+        url = (file as ExternalFileWithCaption).external.url
+        fileName = getExternalImageFileName(
+          (file as ExternalFileWithCaption).external.url,
+          id
+        )
       }
     }
     if (url) {
-      imagePromises.push(fetchImage(fs, url, id))
+      imagePromises.push(fetchImage(fs, url, id, fileName))
     }
   }
 
@@ -163,6 +183,7 @@ function getElements(blocks, level = 0): JSX.Element[] {
         let child = null
         const mediaBlock = getMediaBlockFile(block)
         const imagePath = getMediaBlockFileName(block)
+
         const last_caption_text = mediaBlock.caption
           ? mediaBlock.caption[mediaBlock.caption.length - 1]?.plain_text
           : null
@@ -316,7 +337,6 @@ function getElements(blocks, level = 0): JSX.Element[] {
             <i>️⛔️ Unrendered block (type: {block.type})</i>
           </div>
         )
-        console.log(block)
         break
     }
   }

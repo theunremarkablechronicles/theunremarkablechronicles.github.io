@@ -21,7 +21,11 @@ import {
 } from '@notionhq/client/build/src/api-types'
 import { readFile, writeFile } from 'fs/promises'
 import blogConfig from '../../blog.config'
-import { fetchImage } from '../lib/image-helpers'
+import {
+  fetchImage,
+  getExternalImageFileName,
+  getImageFileName,
+} from '../lib/image-helpers'
 
 export type NamedFile = File & { id: string; name: string }
 
@@ -199,7 +203,17 @@ export async function getAllPosts() {
     await Promise.all(
       postsTable.map(async (post) => {
         if (post.cover?.[post.cover?.type]?.url) {
-          await fetchImage(fs, post.cover?.[post.cover.type].url, post.id)
+          await fetchImage(
+            fs,
+            post.cover?.[post.cover.type].url,
+            post.id,
+            post.cover?.type === 'external'
+              ? getExternalImageFileName(
+                  post.cover[post.cover?.type]?.url,
+                  post.id
+                )
+              : getImageFileName(post.cover[post.cover?.type]?.url, post.id)
+          )
         } else {
           console.warn('cover missing for post:', post)
         }
