@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="utf-8"?>
+<rss version="2.0">
+    <channel>
+        <title>The Unremarkable Chronicles</title>
+        <link>https://theunremarkablechronicles.github.io</link>
+        <description>undefined</description>
+        <lastBuildDate>Fri, 28 Nov 2025 22:32:14 GMT</lastBuildDate>
+        <docs>https://validator.w3.org/feed/docs/rss2.html</docs>
+        <generator>totoro</generator>
+        <language>en</language>
+        <image>
+            <title>The Unremarkable Chronicles</title>
+            <url>https://theunremarkablechronicles.github.io/favicon-32x32.png</url>
+            <link>https://theunremarkablechronicles.github.io</link>
+        </image>
+        <copyright>© 2022 the unremarkable chronicles</copyright>
+        <item>
+            <title><![CDATA[Despresso]]></title>
+            <link>https://theunremarkablechronicles.github.io/Despresso</link>
+            <guid>https://theunremarkablechronicles.github.io/Despresso</guid>
+            <pubDate>Fri, 21 Nov 2025 00:00:00 GMT</pubDate>
+            <description><![CDATA[Coffee City: The First Installment]]></description>
+        </item>
+        <item>
+            <title><![CDATA[soup placeholder 1]]></title>
+            <link>https://theunremarkablechronicles.github.io/soup-placeholder-1</link>
+            <guid>https://theunremarkablechronicles.github.io/soup-placeholder-1</guid>
+            <pubDate>Wed, 27 Jul 2022 00:00:00 GMT</pubDate>
+            <description><![CDATA[just to show how this looks]]></description>
+        </item>
+        <item>
+            <title><![CDATA[blog post example]]></title>
+            <link>https://theunremarkablechronicles.github.io/blog-post-example</link>
+            <guid>https://theunremarkablechronicles.github.io/blog-post-example</guid>
+            <pubDate>Wed, 31 Mar 2021 00:00:00 GMT</pubDate>
+            <description><![CDATA[A test of different types of blocks - check this out to see how things will look on the site]]></description>
+        </item>
+    </channel>
+</rss>
